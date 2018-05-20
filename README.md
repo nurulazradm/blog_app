@@ -31,5 +31,6 @@
 - bundle binstubs guard
 - rbenv rehash
 
-## Configure Guard
+## Configure Guard/Cucumber
 - guard init
+- cucumber --init
