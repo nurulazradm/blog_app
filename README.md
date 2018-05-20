@@ -19,3 +19,6 @@
 - gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
 - gem 'capybara', '~> 3.1'
 - bundle binstubs rspec-core
+
+## RSpec feature
+- rails generate rspec:feature creating_article
