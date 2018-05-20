@@ -2,7 +2,7 @@
 
 - git status
 - git add .
-- git commit -m "<your message>"
+- git commit -m "<your_message>"
 - git push origin <github_repo>
 
 ## Configure Git
