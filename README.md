@@ -14,3 +14,8 @@
 
 - ruby: 2.5.0
 - rails: 5.2.0
+
+# RSpec setup
+- gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
+- gem 'capybara', '~> 3.1'
+- bundle binstubs rspec-core
