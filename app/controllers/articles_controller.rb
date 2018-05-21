@@ -12,12 +12,28 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to articles_path, notice: 'Article has been created'
     else
+      flash.now[:danger] = 'Article has not been created'
       render :new
     end
   end
 
   def show
     @article = Article.find(params[:id])
+  end
+
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to @article, notice: 'Article has been updated'
+    else
+      flash.now[:danger] = 'Article has not been updated'
+      render :edit
+    end
   end
 
   protected
