@@ -9,6 +9,7 @@
       <div class="card-body">
         <h5 class="card-title"><%= link_to article.title, article_path(article) %></h5>
         <p class="card-text"><%= truncate(article.body, length: 500) %></p>
+        <p><%= "Created by: #{article.user.email}" %></p>
       </div>
     </div>
   </div>
