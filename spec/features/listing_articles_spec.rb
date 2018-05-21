@@ -2,8 +2,17 @@ require 'rails_helper'
 
 RSpec.feature "Listing articles", type: :feature do
   before do
-    @article1 = Article.create(title: 'The first article', body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.')
-    @article2 = Article.create(title: 'The second article', body: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')
+    @user = User.create(email: 'user@example.com', password: 'secret')
+    @article1 = Article.create(
+      title: 'The first article',
+      body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      user: @user
+    )
+    @article2 = Article.create(
+      title: 'The second article',
+      body: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      user: @user
+    )
   end
 
   scenario "A user lists all articles" do
