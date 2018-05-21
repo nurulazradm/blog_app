@@ -35,3 +35,11 @@
 ## Configure Guard/Cucumber
 - guard init
 - cucumber --init
+
+# Devise setup
+- gem 'devise', '~> 4.4', '>= 4.4.3'
+
+## Configure Devise
+- rails generate devise:install
+- rails g devise user
+- rails secret
