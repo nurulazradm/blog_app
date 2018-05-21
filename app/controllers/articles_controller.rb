@@ -8,8 +8,11 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.save
-    redirect_to articles_path, notice: 'Article has been created'
+    if @article.save
+      redirect_to articles_path, notice: 'Article has been created'
+    else
+      render :new
+    end
   end
 
   private
