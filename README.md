@@ -43,3 +43,4 @@
 - rails generate devise:install
 - rails g devise user
 - rails secret
+- rails generate devise:views
