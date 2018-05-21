@@ -1,6 +1,9 @@
 <%= link_to 'New Article', new_article_path, class: 'btn btn-outline-primary' %>
 
-<% @articles.each do |article| %>
+<% if @articles.empty? %>
+  <h1 id="no-articles">No articles created</h1>
+<% else %>
+  <% @articles.each do |article| %>
   <div class="well well-lg">
     <div class="card">
       <div class="card-body">
@@ -9,4 +12,5 @@
       </div>
     </div>
   </div>
+  <% end %>
 <% end %>
