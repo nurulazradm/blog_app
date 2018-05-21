@@ -16,16 +16,25 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav  mr-auto">
           <li class="nav-item">
             <a class="nav-link" href="<%= root_url %>">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Signout', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-          </li>
+        </ul>
+        <ul class="navbar-nav"
+          <% if user_signed_in? %>
+            <span class="navbar-text">Signed in as <%= current_user.email %></span>
+            <li class="nav-item">
+              <%= link_to 'Signout', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+            </li>
+          <% end %>
         </ul>
       </div>
     </nav>
