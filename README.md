@@ -23,6 +23,7 @@
 
 ## RSpec feature
 - rails generate rspec:feature creating_article
+- rails generate rspec:request article
 
 # Guard setup
 - gem 'guard', '~> 2.14', '>= 2.14.2'
