@@ -78,6 +78,9 @@ guard :rspec, cmd: "bundle exec rspec" do
     ]
   end
 
+  watch(%r{^app/controllers/(.+)_controller\.rb$}) { "#{rspec.spec_dir}/features" }
+  watch(%r{^app/models/(.+)\.rb$}) { "#{rspec.spec_dir}/features" }
+
   # Rails config changes
   watch(rails.spec_helper)     { rspec.spec_dir }
   watch(rails.routes)          { rspec.spec_dir } #{ "#{rspec.spec_dir}/routing" }
