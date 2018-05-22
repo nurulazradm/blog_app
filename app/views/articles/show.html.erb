@@ -1,21 +1,27 @@
-<h1><%= @article.title %></h1>
+<div class="row">
+  <div class="col-md-12">
+    <h1><%= @article.title %></h1>
 
-<p><%= time_ago_in_words(@article.created_at) %> ago</p>
+    <p><%= time_ago_in_words(@article.created_at) %> ago</p>
 
-<p><%= @article.body %></p>
+    <p><%= @article.body %></p>
 
-<% if user_signed_in? && current_user == @article.user %>
-  <p>
-    <%= link_to 'Edit Article', edit_article_path(@article), class: 'btn btn-primary' %>
-    <%= link_to 'Delete Article', article_path(@article), method: :delete, data: { confirm: "Are you sure you want to delete article?"}, class: 'btn btn-danger' %>
-  </p>
-<% end %>
+    <% if user_signed_in? && current_user == @article.user %>
+    <p>
+      <%= link_to 'Edit Article', edit_article_path(@article), class: 'btn btn-primary' %>
+      <%= link_to 'Delete Article', article_path(@article), method: :delete, data: { confirm: "Are you sure you want to delete article?"}, class: 'btn btn-danger' %>
+    </p>
+    <% end %>
+  </div>
+</div>
 
 <hr>
 
-<%= form_for([@article, @comment]) do |f| %>
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for([@article, @comment]) do |f| %>
 
-  <% if @comment.errors.any? %>
+    <% if @comment.errors.any? %>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
       <h3><%= pluralize(@comment.errors.count, 'error') %> prohibited this comment from being saved:</h3>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -27,12 +33,33 @@
         <% end %>
       </ul>
     </div>
-  <% end %>
+    <% end %>
 
-  <div class="form-group">
-    <%= f.label :body %>
-    <%= f.text_area :body, rows: 10, class: 'form-control', placeholder: 'Your comment', autofocus: true %>
+    <div class="form-group">
+      <%= f.label :body, 'New Comment' %>
+      <%= f.text_area :body, rows: 10, class: 'form-control', placeholder: 'Your comment', autofocus: true %>
+    </div>
+    <%= f.submit 'Add Comment', class: 'btn btn-primary btn-lg' %>
+
+    <% end %>
   </div>
-  <%= f.submit class: 'btn btn-primary btn-lg' %>
+</div>
 
-<% end %>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Comments</h2>
+
+    <% if @article.comments.any? %>
+      <% persisted_comments(@comments).each do |comment| %>
+        <p><%= comment.body %></p>
+
+        <p><%= time_ago_in_words(comment.created_at) %> ago
+          by <%= comment.user.email %></p>
+
+        <hr>
+      <% end %>
+    <% else %>
+      <h4>There are no comments to display.</h4>
+    <% end %>
+  </div>
+</div>
