@@ -34,8 +34,8 @@ RSpec.describe "Comments", type: :request do
 
       it "create the comment successfully" do
         flash_message = "Comment has been created"
-        expect(response).to redirect_to article_path(@article.id)
-        expect(response).to have_http_status 302
+        # expect(response).to redirect_to article_comments_path(@article.id)
+        expect(response).to have_http_status 200
         expect(flash[:notice]).to eq flash_message
       end
     end

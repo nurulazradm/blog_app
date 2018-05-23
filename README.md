@@ -44,3 +44,6 @@
 - rails g devise user
 - rails secret
 - rails generate devise:views
+
+# ActionCable
+- rails generate channel <your_channel>

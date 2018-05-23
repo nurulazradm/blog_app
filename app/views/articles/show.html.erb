@@ -19,7 +19,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <%= form_for([@article, @comment]) do |f| %>
+    <%= form_for([@article, @comment], remote: true) do |f| %>
 
     <% if @comment.errors.any? %>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -50,14 +50,16 @@
     <h2>Comments</h2>
 
     <% if @article.comments.any? %>
-      <% persisted_comments(@comments).each do |comment| %>
-        <p><%= comment.body %></p>
+      <div id="messages">
+        <% persisted_comments(@comments).each do |comment| %>
+          <p><%= comment.body %></p>
 
-        <p><%= time_ago_in_words(comment.created_at) %> ago
-          by <%= comment.user.email %></p>
+          <p><%= time_ago_in_words(comment.created_at) %> ago
+            by <%= comment.user.email %></p>
 
-        <hr>
-      <% end %>
+          <hr>
+        <% end %>
+      </div>
     <% else %>
       <h4>There are no comments to display.</h4>
     <% end %>
